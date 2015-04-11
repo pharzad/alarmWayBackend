@@ -37,7 +37,8 @@ function login(req, res) {
     var password = req.body.password;
 
     User.find({
-        email: email,password:password
+        email: email,
+        password: password
     }, function (err, response) {
         if (err)
             res.send(err);
@@ -77,6 +78,8 @@ function updateUser(req, res) {
 function createUser(req, res) {
 
     var user = new User();
+    
+    console.log(JSON.stringify(req));
 
     user.name = req.body.name;
     user.password = req.body.password;
@@ -85,30 +88,26 @@ function createUser(req, res) {
     user.location = req.body.location;
     user.gender = req.body.gender;
 
-     User.find({
+    User.find({
         email: req.body.email
     }, function (err1, tempUser) {
-         
-         if (tempUser.length===0)
-         {
-         
-        user.save(function (err) {
-            if (err)
-                res.send(err);
 
-            res.json({
-                user:user,
-                message: 'success'
+        if (tempUser.length === 0) {
+
+            user.save(function (err) {
+                if (err)
+                    res.send(err);
+
+                res.json({
+                    user: user,
+                    message: 'success'
+                });
             });
-        });
-         }
-         
-         else
-         {
-              res.json({
+        } else {
+            res.json({
                 message: 'exist'
             });
-         }
+        }
     });
 }
 
