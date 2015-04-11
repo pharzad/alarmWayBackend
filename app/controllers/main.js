@@ -78,8 +78,6 @@ function updateUser(req, res) {
 function createUser(req, res) {
 
     var user = new User();
-    
-    console.log(JSON.stringify(req));
 
     user.name = req.body.name;
     user.password = req.body.password;
