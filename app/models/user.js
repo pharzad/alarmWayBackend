@@ -9,6 +9,7 @@ var userSchema   = new Schema({
     pic:String,
     location:String,
     gender:String,
+    firstTime:Boolean,
     
     alarms:[{
         name:String,
