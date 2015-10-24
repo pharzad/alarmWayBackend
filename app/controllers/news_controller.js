@@ -14,7 +14,11 @@ function getAllSources(req, res) {
 
 function createSource(req, res) {
     var news = new News();
-    news = req.body;
+    
+    news.title = req.body.title;
+    news.feed = req.body.feed;
+    news.image = req.body.image;
+    
     news.save(function (err) {
         if (err) res.send(err);
         res.json({
