@@ -36,7 +36,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-mongoose.connect('mongodb://54.200.229.25:27017/wayAlarm');
+mongoose.connect('mongodb://localhost:27017/wayAlarm');
 
 /**
  * Loads all routes from controllers folder
