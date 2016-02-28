@@ -48,8 +48,6 @@ function login(req, res) {
 }
 
 function updateUser(req, res) {
-
-
     User.findById(req.params.user_id, function (err, user) {
 
         if (err)
@@ -83,7 +81,7 @@ function createUser(req, res) {
     user.password = req.body.password;
     user.email = req.body.email;
     user.pic = req.body.pic;
-    user.location = req.body.location;
+    user.location = JSON.stringify(req.body.location);
     user.gender = req.body.gender;
 
     User.find({
